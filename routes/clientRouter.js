@@ -1,0 +1,14 @@
+const express=require('express');
+const router=express.Router();
+const {hellow,addClient,getData,getPhoto,deleClient,updateClient,searchClient,getNbrClientByPriority,getLatest}=require('../controllers/clintController');
+const {requireSignIn}=require("../middlewares/auth");
+router.get("/hellow",hellow);
+router.post("/addClient",requireSignIn,addClient);
+router.post("/getClients/:offset",requireSignIn,getData);
+router.get("/getPhoto/:_id",getPhoto);
+router.post("/deleteClient/:_id",requireSignIn,deleClient);
+router.post("/updateClient/:_id",requireSignIn,updateClient);
+router.post("/searchClient",requireSignIn,searchClient);
+router.post("/getNbrClientByPriority",requireSignIn,getNbrClientByPriority);
+router.post("/getLatest",requireSignIn,getLatest);
+module.exports=router;
